@@ -1,0 +1,13 @@
+services:
+  mydb:
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+    image: mysql
+  mysite:
+    image: wordpress
+    links:
+    - mydb:site
+    ports:
+    - published: 8080
+      target: 80
+version: '3'
